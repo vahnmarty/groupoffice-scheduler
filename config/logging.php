@@ -50,13 +50,19 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'cron'],
             'ignore_exceptions' => false,
         ],
 
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+
+        'cron' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/cron.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
